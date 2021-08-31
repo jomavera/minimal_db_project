@@ -13,14 +13,18 @@ class App extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        var fr=new FileReader();
-        fr.onload = async function () {
-                    const response = await db_connection.get('/insert',{
-                        params:{data: fr.result }
-                });
-        };
-        fr.readAsText(this.fileInput.current.files[0]);
-        setTimeout(this.updateData(), 3000);
+        if (event.target.value == null){
+            alert("Need to choose an .txt file")
+        } else {
+            var fr=new FileReader();
+            fr.onload = async function () {
+                        const response = await db_connection.get('/insert',{
+                            params:{data: fr.result }
+                    });
+            };
+            fr.readAsText(this.fileInput.current.files[0]);
+            setTimeout(this.updateData(), 3000);
+        }
     }
 
     updateData = async () => {

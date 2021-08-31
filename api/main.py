@@ -2,24 +2,20 @@ from flask import request, Response
 from flask_cors import CORS
 from flask_api import FlaskAPI
 import json
+import pandas as pd
 import psycopg2
 import re
-import pandas as pd
-# import numpy as np
-
 
 app = FlaskAPI(__name__)
 
-#app   = Flask(__name__)
 CORS(app)
-
 
 @app.route('/insert', methods=['GET'])
 def insert():
     
     data = request.args.get('data')
-
     rows= re.findall(r"\w+\s+\w+\s+\d+\s+\w+\s+\w+",data)
+
     conn = psycopg2.connect("host=127.0.0.1 dbname=project\
                             user=josemanuel")
     conn.set_session(autocommit=True)

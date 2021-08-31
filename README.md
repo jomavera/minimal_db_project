@@ -1,7 +1,7 @@
 
-# Minimal project of a Web pp with Database
+# Minimal project of a Web app with Database
 
-The project idea is from the challenge shown in this [repo](https://github.com/igorman/data-engineering). The solution on this repo is a React app that reads a `.txt` files and inserts the content to a PostgreSQL table. Once the data is loaded then it is fetched from the database and then presented in a table with the total count of sales.
+The project idea is from the challenge shown in this [repo](https://github.com/igorman/data-engineering). The solution shown here is a React app that reads a `.txt` files and inserts the content to a PostgreSQL table. Once the data is loaded then it is fetched from the database and then presented in a table with the total count of sales.
 
 ## Requirements
 
@@ -28,13 +28,15 @@ psycopg2 2.8.6
 
 ### 1. Create database
  
-First the PostgreSQL must be running
+First the PostgreSQL server must be running. From the terminal run:
 
 `pg_ctl -D /usr/local/var/postgres start`
 
-Then, it can be accesed with `psql postgres`
+Then, the server can be accesed from terminal with:
 
-Once accesed to the PostgreSQL server run the following command to create the database
+ `psql postgres`
+
+Run the following command to create the database that the API will be using:
 
 `CREATE DATABASE project ENCODING='UTF8' TEMPLATE='template0';`
 
